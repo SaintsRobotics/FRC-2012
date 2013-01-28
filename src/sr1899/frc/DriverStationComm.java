@@ -14,7 +14,7 @@ public class DriverStationComm
     private DriverStationEnhancedIO DS_IO;
     private DriverStationLCD LCD;
     private Dashboard DB;
-    private NetworkTable NT;
+    //private NetworkTable NT;
     //private ZombDashboard zb;
 
     public DriverStationComm()
@@ -23,7 +23,7 @@ public class DriverStationComm
         DS_IO = DS.getEnhancedIO();
         LCD = DriverStationLCD.getInstance();
         DB = DS.getDashboardPackerLow();
-        NT = new NetworkTable();
+        //NT = new NetworkTable();
     }
 
     public void printUserMsg(DriverStationLCD.Line line, int startingColumn, String message)
