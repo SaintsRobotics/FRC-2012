@@ -14,7 +14,6 @@ public class DriverStationComm
     private DriverStationEnhancedIO DS_IO;
     private DriverStationLCD LCD;
     private Dashboard DB;
-    //private NetworkTable NT;
     //private ZombDashboard zb;
 
     public DriverStationComm()
@@ -23,7 +22,6 @@ public class DriverStationComm
         DS_IO = DS.getEnhancedIO();
         LCD = DriverStationLCD.getInstance();
         DB = DS.getDashboardPackerLow();
-        //NT = new NetworkTable();
     }
 
     public void printUserMsg(DriverStationLCD.Line line, int startingColumn, String message)
@@ -83,13 +81,5 @@ public class DriverStationComm
         SmartDashboard.putString("Launch", launchRPM + "");
         SmartDashboard.putInt("ShooterRPM", launchRPM);
         Timer.delay(0.01);
-
-        /*NT.beginTransaction();
-        NT.putBoolean("Lifter", lifter);
-        NT.putBoolean("Feeder", feeder);
-        NT.putBoolean("Slow", slow);
-        NT.putString("Launch", launchRPM + "");
-        NT.putInt("ShooterRPM", launchRPM);
-        NT.endTransaction();*/
     }
 }

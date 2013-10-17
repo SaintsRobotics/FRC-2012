@@ -24,7 +24,6 @@ public class Robot extends IterativeRobot
     BallPickup pickup;
     Autonomous auton;
     Tipper tip;
-    //BridgeTipper tipper;
 
     int timer;
 
@@ -55,17 +54,6 @@ public class Robot extends IterativeRobot
      */
     public void autonomousPeriodic()
     {
-        /*launcher.setLauncher(0.42);
-        if (timer == 60)
-        {
-            pickup.setFeederOn(true);
-            pickup.setLifterOn(true);
-        }
-        if (timer == 120)
-        {
-            pickup.setFeederOn(false);
-            pickup.setFeederOn(false);
-        }*/
         auton.execute_Routine(timer);
         ++timer;
         //System.out.println(timer);
