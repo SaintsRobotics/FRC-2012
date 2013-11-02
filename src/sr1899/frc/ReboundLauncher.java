@@ -2,9 +2,8 @@ package sr1899.frc;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.PIDOutput;
-import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.can.CANTimeoutException;
 
 /**
  *
@@ -51,12 +50,12 @@ public class ReboundLauncher extends PIDController
         ReboundLauncher.motors = new CANJaguar[motorIDs.length];
         try
         {
-            for(int i = 0; i < motorIDs.length; i++)
+            for (int i = 0; i < motorIDs.length; i++)
             {
                 ReboundLauncher.motors[i] = new CANJaguar(motorIDs[i]);
             }
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -68,7 +67,7 @@ public class ReboundLauncher extends PIDController
     {
         try
         {
-            for(int i = 0; i < motors.length; i++)
+            for (int i = 0; i < motors.length; i++)
             {
                 motors[i].configNeutralMode(RobotConstants.LAUNCHER_CAN_NEUTRAL_MODE);
                 motors[i].setSpeedReference(RobotConstants.LAUNCHER_CAN_SPEED_REFERENCE);
@@ -80,7 +79,7 @@ public class ReboundLauncher extends PIDController
             encoder.setPIDSourceParameter(Encoder.PIDSourceParameter.kDistance);
             encoder.start();
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -95,7 +94,7 @@ public class ReboundLauncher extends PIDController
             reset();
             disable();
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -111,7 +110,7 @@ public class ReboundLauncher extends PIDController
                 enable();
             }
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -132,7 +131,7 @@ public class ReboundLauncher extends PIDController
 
         // convert to RPM
         motorvalue = RobotConstants.LAUNCHER_MOTOR_CLAMP * lastspeed;
-        if(RobotConstants.LAUNCHER_MOTOR_PID_MODE)
+        if (RobotConstants.LAUNCHER_MOTOR_PID_MODE)
         {
             // set software pid
             setSetpoint(motorvalue);
@@ -152,13 +151,13 @@ public class ReboundLauncher extends PIDController
         motorValue = motorValue / RobotConstants.LAUNCHER_MOTOR_CLAMP;
         try
         {
-            for(int i = 0; i < motors.length; i++)
+            for (int i = 0; i < motors.length; i++)
             {
                 // set motor speed
                 motors[i].setX(convertToDouble(RobotConstants.LAUNCHER_MOTOR_INVERTED[i]) * motorValue);
             }
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -175,12 +174,12 @@ public class ReboundLauncher extends PIDController
         String ret = "V: ";
         try
         {
-            for(int i = 0; i < motors.length; i++)
+            for (int i = 0; i < motors.length; i++)
             {
                 ret += Math.floor(motors[i].getOutputVoltage() * 10) / 10 + ",";
             }
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -192,12 +191,12 @@ public class ReboundLauncher extends PIDController
         String ret = "C: ";
         try
         {
-            for(int i = 0; i < motors.length; i++)
+            for (int i = 0; i < motors.length; i++)
             {
                 ret += Math.floor(motors[i].getOutputCurrent() * 10) / 10 + ",";
             }
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -206,7 +205,7 @@ public class ReboundLauncher extends PIDController
 
     private double convertToDouble(boolean input)
     {
-        if(input)
+        if (input)
         {
             return 1.0;
         }

@@ -6,6 +6,7 @@ package sr1899.frc;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.can.CANTimeoutException;
 
 /**
  *
@@ -13,7 +14,7 @@ import edu.wpi.first.wpilibj.PIDSource;
  */
 public class CANJaguarSource implements PIDSource
 {
-    private CANJaguar[] motors;
+    private final CANJaguar[] motors;
 
     private static double lastspeed;
     private static double aspeed;
@@ -31,7 +32,7 @@ public class CANJaguarSource implements PIDSource
         {
             total = motors[0].getSpeed();
         }
-        catch (Exception e)
+        catch (CANTimeoutException e)
         {
             // if we get an exception use last speed
 //            total = lastspeed;

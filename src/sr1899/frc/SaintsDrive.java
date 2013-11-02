@@ -40,7 +40,7 @@ public class SaintsDrive
             initialize();
             disableAll();
         }
-        catch (Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -74,7 +74,7 @@ public class SaintsDrive
             //Set motor controller mode
             changeCANControlMode();
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -92,7 +92,7 @@ public class SaintsDrive
             //s_leftpiston.set(false);
             //s_rightpiston.set(false);
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -107,7 +107,7 @@ public class SaintsDrive
             m_backleft.enableControl();
             m_backright.enableControl();
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -127,7 +127,7 @@ public class SaintsDrive
             m_backleft.changeControlMode(mode);
             m_backright.changeControlMode(mode);
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -149,7 +149,7 @@ public class SaintsDrive
             m_backleft.setPID(p, i, d);
             m_backright.setPID(p, i, d);
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -173,19 +173,19 @@ public class SaintsDrive
         double maxMagnitude = 0;
         double clampRatio;
 
-        for(int i = 0; i < motorValues.length; i++)
+        for (int i = 0; i < motorValues.length; i++)
         {
-            if(java.lang.Math.abs(motorValues[i]) > maxMagnitude)
+            if (java.lang.Math.abs(motorValues[i]) > maxMagnitude)
             {
                 maxMagnitude = java.lang.Math.abs(motorValues[i]);
             }
         }
 
-        if(maxMagnitude > RobotConstants.DRIVE_MOTOR_CLAMP)
+        if (maxMagnitude > RobotConstants.DRIVE_MOTOR_CLAMP)
         {
             clampRatio = (RobotConstants.DRIVE_MOTOR_CLAMP / maxMagnitude);
 
-            for(int i = 0; i < motorValues.length; i++)
+            for (int i = 0; i < motorValues.length; i++)
             {
                 motorValues[i] *= clampRatio;
             }
@@ -233,7 +233,7 @@ public class SaintsDrive
             //System.out.println("FL: " + m_frontleft.getX() + " FR: " + m_frontright.getX() + " BL: " + m_backleft.getX() + " BR: " + m_backright.getX());
             //System.out.println("FL: " + m_frontleft.getP() + " FR: " + m_frontright.getP() + " BL: " + m_backleft.getP() + " BR: " + m_backright.getP());
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -248,7 +248,7 @@ public class SaintsDrive
             m_backleft.setX(speed);
             m_backright.setX(speed);
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -258,7 +258,7 @@ public class SaintsDrive
     {
         try
         {
-            switch(motornumber)
+            switch (motornumber)
             {
                 case RobotConstants.DRIVE_CANJAGUAR_FRONT_LEFT_DEVICE_ID:
                     m_frontleft.setX(speed);
@@ -274,7 +274,7 @@ public class SaintsDrive
                     break;
             }
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -282,7 +282,7 @@ public class SaintsDrive
 
     private double convertToDouble(boolean input)
     {
-        if(input)
+        if (input)
         {
             return 1.0;
         }
@@ -307,7 +307,7 @@ public class SaintsDrive
     {
         try
         {
-            switch(motornumber)
+            switch (motornumber)
             {
                 case RobotConstants.DRIVE_CANJAGUAR_FRONT_LEFT_DEVICE_ID:
                     return m_frontleft.getSpeed();
@@ -319,7 +319,7 @@ public class SaintsDrive
                     return m_backright.getSpeed();
             }
         }
-        catch(Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -330,7 +330,7 @@ public class SaintsDrive
     {
         try
         {
-            switch(motornumber)
+            switch (motornumber)
             {
                 case RobotConstants.DRIVE_CANJAGUAR_FRONT_LEFT_DEVICE_ID:
                     return m_frontleft.getX();
@@ -342,7 +342,7 @@ public class SaintsDrive
                     return m_backright.getX();
             }
         }
-        catch (Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }
@@ -364,7 +364,7 @@ public class SaintsDrive
             acurrent[3] = (acurrent[3]*7 + m_backright.getOutputCurrent())/8;
             ret += Math.floor(acurrent[3] * 10)/10;
         }
-        catch (Exception e)
+        catch (CANTimeoutException e)
         {
             e.printStackTrace();
         }

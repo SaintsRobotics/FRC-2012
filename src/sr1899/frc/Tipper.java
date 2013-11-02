@@ -12,9 +12,9 @@ import edu.wpi.first.wpilibj.Servo;
  */
 public class Tipper
 {
-    private Servo tipServo;
-    private int deployAngle = RobotConstants.TIPPER_SERVO_DEPLOY_ANGLE;
-    private int retractAngle = RobotConstants.TIPPER_SERVO_RETRACT_ANGLE;
+    private final Servo tipServo;
+    private final int deployAngle = RobotConstants.TIPPER_SERVO_DEPLOY_ANGLE;
+    private final int retractAngle = RobotConstants.TIPPER_SERVO_RETRACT_ANGLE;
 
     public Tipper()
     {

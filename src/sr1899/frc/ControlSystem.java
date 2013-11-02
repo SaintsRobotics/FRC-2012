@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class ControlSystem extends Joystick
 {
-    private Joystick secondcontroller;
+    private final Joystick secondcontroller;
 
-    private boolean[] lastbuttons;
-    private boolean[] toggled;
+    private final boolean[] lastbuttons;
+    private final boolean[] toggled;
 
     private boolean slow_toggle;
     private boolean lifter_toggle;

@@ -17,15 +17,15 @@ import edu.wpi.first.wpilibj.*;
  */
 public class Robot extends IterativeRobot
 {
-    SaintsDrive drive;
-    ControlSystem control;
-    DriverStationComm comm;
-    ReboundLauncher launcher;
-    BallPickup pickup;
-    Autonomous auton;
-    Tipper tip;
+    private SaintsDrive drive;
+    private ControlSystem control;
+    private DriverStationComm comm;
+    private ReboundLauncher launcher;
+    private BallPickup pickup;
+    private Autonomous auton;
+    private Tipper tip;
 
-    int timer;
+    private int timer;
 
     /* This function is run when the robot is first started up and should be
      * used for any initialization code.

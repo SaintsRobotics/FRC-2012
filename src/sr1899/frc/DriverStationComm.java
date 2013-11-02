@@ -1,6 +1,7 @@
 package sr1899.frc;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.DriverStationEnhancedIO.EnhancedIOException;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -10,11 +11,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class DriverStationComm
 {
-    private DriverStation DS;
-    private DriverStationEnhancedIO DS_IO;
-    private DriverStationLCD LCD;
-    private Dashboard DB;
-    //private ZombDashboard zb;
+    private final DriverStation DS;
+    private final DriverStationEnhancedIO DS_IO;
+    private final DriverStationLCD LCD;
+    private final Dashboard DB;
+    //private final ZombDashboard zb;
 
     public DriverStationComm()
     {
@@ -67,7 +68,7 @@ public class DriverStationComm
         {
             DS_IO.setLED(channel, on);
         }
-        catch (Exception e)
+        catch (EnhancedIOException e)
         {
             e.printStackTrace();
         }

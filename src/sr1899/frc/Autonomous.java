@@ -1,21 +1,19 @@
 package sr1899.frc;
 
-import edu.wpi.first.wpilibj.*;
-
 /**
  *
  * @author Developer
  */
 public class Autonomous
 {
-    private SaintsDrive drive;
-    private ControlSystem control;
-    private DriverStationComm comm;
-    private ReboundLauncher launcher;
-    private BallPickup pickup;
-    private Tipper tip;
+    private final SaintsDrive drive;
+    private final ControlSystem control;
+    private final DriverStationComm comm;
+    private final ReboundLauncher launcher;
+    private final BallPickup pickup;
+    private final Tipper tip;
 
-    private int routine = RobotConstants.AUTONOMOUS_ROUTINE;
+    private final int routine = RobotConstants.AUTONOMOUS_ROUTINE;
 
     public Autonomous(SaintsDrive mDrive,
                       ControlSystem mControl,
@@ -34,7 +32,7 @@ public class Autonomous
 
     public void execute_Routine(int cycles)
     {
-        switch(routine)
+        switch (routine)
         {
             case 0:
                 Routine0(cycles); return;
@@ -213,7 +211,6 @@ public class Autonomous
 
     private void Routine5(int cycles)
     {
-        //Poop out balls from intake
+        // Poop out balls from intake
     }
-
 }
